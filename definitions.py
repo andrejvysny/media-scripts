@@ -13,7 +13,7 @@ OUTPUTS_FOLDER = "result"
 
 MOVIES_DICTIONARY_OUTPUT = "moviesDisctionary.json"
 
-FILE_SIZE_LIMIT = 3500000000
+FILE_SIZE_LIMIT = 4000000000
 VIDEO_COMPLEX_ANALYSIS = False
 
 
@@ -46,7 +46,7 @@ def loadMoviesDictionary():
     
 
 def writeDataToFile(filename, data):
-    with open(os.path.join(OUTPUTS_FOLDER,filename), 'w') as file:
+    with open(os.path.join(OUTPUTS_FOLDER,filename), 'w', encoding='utf-8') as file:
         for item in data:
             file.write(str(item) + '\n')
 
@@ -134,7 +134,7 @@ def listMoviesAndSaveJson():
             moviesDictionary[directoryName] = listFilesInDirectory(directoryName)
             print (f" -- [{str(len(moviesDictionary[directoryName]))}] - {directoryName}")
     print("END LISTING ...\n")
-
+    print(f"Count: {len(moviesDictionary)}")
     # Write the dictionary to a JSON file
     fullSavePath = os.path.join(OUTPUTS_FOLDER,MOVIES_DICTIONARY_OUTPUT)
     with open(fullSavePath, "w") as json_file:
